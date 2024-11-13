@@ -133,4 +133,3 @@ function switchTab(event) {
 tabButtons.forEach(button => {
     button.addEventListener('click', switchTab);
 });
-

@@ -119,13 +119,21 @@ function switchTab(event) {
     tabButtons.forEach(button => button.classList.remove('active'));
     codeEditors.forEach(editor => editor.classList.remove('active'));
 
-    // Add active class to clicked tab button
+    // Add active class to the clicked tab button
     event.currentTarget.classList.add('active');
 
-    // Find the index of the clicked button and activate the corresponding editor
-    const tabIndex = Array.from(tabButtons).indexOf(event.currentTarget);
-    codeEditors[tabIndex].classList.add('active');
+    // Get the data-tab attribute value to find the corresponding editor
+    const selectedTab = event.currentTarget.getAttribute('data-tab');
+    
+    // Activate the corresponding code editor based on data-tab value
+    document.getElementById(`${selectedTab}-editor`).classList.add('active');
 }
+
+// Add click event listeners to all tab buttons
+tabButtons.forEach(button => {
+    button.addEventListener('click', switchTab);
+});
+
 
 // Add click event listeners to all tab buttons
 tabButtons.forEach(button => {

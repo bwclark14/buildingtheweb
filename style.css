@@ -138,6 +138,19 @@ header select {
     padding-right: 10px; /* Add padding for better spacing of line numbers */
 }
 
+/* Hide all editors by default */
+.code-editor {
+    display: none;
+    height: 100%;
+    width: 100%;
+}
+
+/* Show only the active editor */
+.code-editor.active {
+    display: block;
+}
+
+
 @media screen and (max-width: 900px) and (min-width: 600px) and (orientation: portrait) {
   .container {
     flex-direction: column;

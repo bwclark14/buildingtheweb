@@ -61,14 +61,17 @@ function updatePreview() {
     const jsContent = `<script>${jsEditor.getValue()}</script>`;
     const fullContent = htmlContent + cssContent + jsContent;
 
+    console.log("Updating preview with:", fullContent); // Debugging line
+
     const previewFrame = document.getElementById('preview');
     previewFrame.srcdoc = fullContent; // Inject code into iframe
 }
 
-// Listen for changes in editors to update preview
+// Ensure each editor triggers updatePreview
 htmlEditor.on("change", updatePreview);
 cssEditor.on("change", updatePreview);
 jsEditor.on("change", updatePreview);
+
 
 // Save editor content to localStorage
 function saveContentToLocalStorage() {

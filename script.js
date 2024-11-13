@@ -134,9 +134,3 @@ tabButtons.forEach(button => {
     button.addEventListener('click', switchTab);
 });
 
-
-// Add click event listeners to all tab buttons
-tabButtons.forEach(button => {
-    button.addEventListener('click', switchTab);
-});
-

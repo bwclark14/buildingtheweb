@@ -111,13 +111,13 @@ document.getElementById("popoutBtn").addEventListener("click", () => {
 
 // Select all tab buttons and code editor containers
 const tabButtons = document.querySelectorAll('.tab-button');
-const codeEditors = document.querySelectorAll('.code-editor');
+const codeEditors = document.querySelectorAll('.CodeMirror');
 
 // Function to handle tab switching
 function switchTab(event) {
-    // Remove active class from all buttons and editors
+    // Remove active class from all buttons and hide all editors
     tabButtons.forEach(button => button.classList.remove('active'));
-    codeEditors.forEach(editor => editor.classList.remove('active'));
+    codeEditors.forEach(editor => editor.getWrapperElement().style.display = 'none');
 
     // Add active class to the clicked tab button
     event.currentTarget.classList.add('active');
@@ -125,11 +125,12 @@ function switchTab(event) {
     // Get the data-tab attribute value to find the corresponding editor
     const selectedTab = event.currentTarget.getAttribute('data-tab');
     
-    // Activate the corresponding code editor based on data-tab value
-    document.getElementById(`${selectedTab}-editor`).classList.add('active');
+    // Display the corresponding editor based on data-tab value
+    document.getElementById(`${selectedTab}-editor`).CodeMirror.getWrapperElement().style.display = 'block';
 }
 
 // Add click event listeners to all tab buttons
 tabButtons.forEach(button => {
     button.addEventListener('click', switchTab);
 });
+
